@@ -16,8 +16,9 @@ health-assistant/
     │   │   ├── BgEvaluator.java     # 血糖评估
     │   │   ├── SleepEvaluator.java  # 睡眠评估
     │   │   ├── ExerciseAdvisor.java # 运动建议
-    │   │   ├── Reminder.java        # 提醒实体模型
-    │   │   └── ReminderManager.java # 用药提醒管理
+    │   │   ├── Reminder.java           # 提醒实体模型
+    │   │   ├── ReminderManager.java    # 用药提醒管理
+    │   │   └── AIAdvisorService.java   # AI 健康问答服务
     │   └── ui/                      # 界面层
     │       ├── MainWindow.java      # 主窗口（导航框架）
     │       ├── BpPage.java          # 血压评估页
@@ -25,13 +26,15 @@ health-assistant/
     │       ├── SleepPage.java       # 睡眠评估页
     │       ├── ExercisePage.java    # 运动建议页
     │       ├── ReminderPage.java    # 用药提醒页
+    │       ├── AIPage.java          # AI 健康助手页
     │       └── Styles.java          # 全局样式常量
     └── test/java/com/healthassistant/logic/
         ├── BpEvaluatorTest.java     # 血压评估单元测试
         ├── BgEvaluatorTest.java     # 血糖评估单元测试
         ├── SleepEvaluatorTest.java  # 睡眠评估单元测试
         ├── ExerciseAdvisorTest.java # 运动建议单元测试
-        └── ReminderManagerTest.java # 提醒管理单元测试
+        ├── ReminderManagerTest.java # 提醒管理单元测试
+        └── AIAdvisorServiceTest.java # AI 健康问答单元测试
 ```
 
 ## 功能模块
@@ -72,6 +75,16 @@ health-assistant/
 - 添加提醒：药品名称、剂量、时间
 - 自动检测当前时间是否有需要服用的药品
 - 数据校验：名称不超过50字、剂量不超过30字
+
+### 6. AI 健康助手 (AIAdvisorService)
+
+提供基于知识库的智能健康问答，用户输入健康相关问题，系统自动匹配最相关的答案。
+
+- 知识库涵盖 6 大类别：血压、血糖、睡眠、运动、用药、饮食
+- 关键词提取：自动清洗标点符号，过滤短词（<2字），提取关键词
+- 智能匹配：精确匹配权重 5 分，部分匹配根据长度加权计分
+- 无匹配兜底：无法识别的问题统一返回友好提示
+- 界面上提供快捷提问按钮（"试试这样问我"）
 
 ## 技术栈
 

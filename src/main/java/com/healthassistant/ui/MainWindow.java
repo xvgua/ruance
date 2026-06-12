@@ -25,12 +25,14 @@ public class MainWindow extends Application {
         PAGE_TITLES.put("reminder", "用药提醒");
         PAGE_TITLES.put("exercise", "运动建议");
         PAGE_TITLES.put("sleep", "睡眠评估");
+        PAGE_TITLES.put("ai", "AI健康助手");
 
         PAGE_ICONS.put("bp", "\u2764\uFE0F");
         PAGE_ICONS.put("bg", "\uD83E\uDE7A");
         PAGE_ICONS.put("reminder", "\uD83D\uDC8A");
         PAGE_ICONS.put("exercise", "\uD83C\uDFC3");
         PAGE_ICONS.put("sleep", "\uD83D\uDCA4");
+        PAGE_ICONS.put("ai", "\uD83E\uDD16");
     }
 
     private final Map<String, StackPane> pages = new LinkedHashMap<>();
@@ -47,6 +49,7 @@ public class MainWindow extends Application {
     private ReminderPage reminderPage;
     private ExercisePage exercisePage;
     private SleepPage sleepPage;
+    private AIPage aiPage;
 
     @Override
     public void start(Stage primaryStage) {
@@ -117,6 +120,7 @@ public class MainWindow extends Application {
                 {"reminder", "用药提醒"},
                 {"exercise", "运动建议"},
                 {"sleep", "睡眠评估"},
+                {"ai", "AI健康助手"},
         };
 
         for (String[] config : pageConfig) {
@@ -240,6 +244,7 @@ public class MainWindow extends Application {
         reminderPage = new ReminderPage(getPage("reminder"), reminderManager);
         exercisePage = new ExercisePage(getPage("exercise"));
         sleepPage = new SleepPage(getPage("sleep"));
+        aiPage = new AIPage(getPage("ai"));
 
         return content;
     }
